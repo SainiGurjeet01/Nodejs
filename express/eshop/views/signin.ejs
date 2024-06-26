@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <%- include('__bootstrap.ejs')%>
+</head>
+<body>
+<%- include('__header.ejs')%>
+<br>
+<div class="container">
+  <div style="height: 80vh;" class="d-flex justify-contain-center align-items-center">
+    <form action="/sign-in" method="post" style="width: 30%; box-shadow: 0 0 10px black; padding: 10px;">
+    <%
+      if (message){
+    
+    %>
+    <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" >&times;</a>
+        <strong>Error!</strong> Invaild Username Or Password
+    </div>
+    <%}%>
+        <div style="height: 30px;"class="bg-danger hearder p-1 d-flex justify-contain-center align-item-center">
+        <h6 class="text-white" style="margin: 0;">Sign Here</h6>
+        </div>
+        <div class="from-group mt-2">
+          <input name="email" type="text" class="form-control" placeholder="Enter email"/>
+        </div>
+        <div class="from-group">
+            <input name="password" type="password" class="form-control" placeholder="Enter Password"/>
+        </div>
+        <div class="from-group d-flex flex-column align-item-center justify-contain-center">
+            <button type="submit"class="btn btn-outline-secondary"style="width: 100%; margin: auto;">Sign In</button>
+            <a href="/sign-up">
+                <small class="text-primary mt-2">Create New Accout ?</small>
+            </a>
+        </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
