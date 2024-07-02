@@ -1,7 +1,5 @@
-
-import { request, response } from "express";
 import { User } from "../model/user.model.js";
-import { validationResult } from "express-validation";
+import { validationResult } from "express-validator";
 export const signIn = (request,response,next)=>{
     User.findOne({email: request.body.email,password:request.body.password})
     .then(result=>{
@@ -11,7 +9,7 @@ export const signIn = (request,response,next)=>{
         return response.status(500).json({erroe:"Internal Server Error"});
     });
 }
-export const singup = async (request,response,next)=>{
+export const signUp = async (request,response,next)=>{
     try{
         const errors = validationResult(request);
         if (!errors.isEmpty())

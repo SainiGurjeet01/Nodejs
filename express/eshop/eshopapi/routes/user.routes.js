@@ -1,7 +1,7 @@
 
 import express from "express";
 import {signUp,signIn} from "../controller/user.controller.js";
-import { boby } from "express-validation";
+import { body } from "express-validator";
 const router = express.Router();
 
 router.post("/signup",body("email","Invalid email Id").isEmail(),
