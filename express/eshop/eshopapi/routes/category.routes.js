@@ -10,6 +10,6 @@ router.post("/save",
        body("name","Name IS Required").notEmpty,
        body("url").notEmpty,save);
 
-router.get("/list","getCategoryList");
-router.get("/:id","getCategory");
+router.get("/list",getCategoryList);
+router.get("/:id",getCategory);
 export default router;

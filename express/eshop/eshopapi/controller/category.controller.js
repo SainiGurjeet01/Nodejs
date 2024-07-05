@@ -1,7 +1,7 @@
 
 import { validationResult } from "express-validator";
-import { Category, Category } from "../model/category.model";
-import { request, response } from "express";
+import { Category } from "../model/category.model.js";
+
 
 export const saveInBulk = (request,response,next)=>{
     Category.insertMany(request.body)
@@ -23,4 +23,32 @@ export const save = async (request,response,next)=>{
     catch(err){
         return response.status(500).json({error:"Internal Server Error"});
     }
+}
+export const getCategory = async(request,response,next)=>{
+    let id = request.params.id;
+    try{
+        let category = await Category.findOne({_id:id});
+        return category ? response.status(200).json({category}): response.status(404).json({error:"Resource not found | is not found"});
+    }
+    catch (err){
+        return response.status(500).json({error:"Internet Server Error "});
+    }
+}
+export const getCategoryList =(request,response,next)=>{
+    Category.find()
+    .then(result=>{
+        return response.status(200).json({CategoryList:result});
+    }).catch(err=>{
+        return response.status(500).json({error:"Internet Server Error"});
+    });
+
+}
+export const deleteCategory =  (request,response,next)=>{
+    let id = request.params.id;
+    Category.deleteOne({_id:id})
+    .then(result=>{
+        return response.status(200).json({message:"Category Deleted Successfilly"});
+    }).catch(err=>{
+        return response.status(500).json({error:"Invaild Error"});
+    })
 }

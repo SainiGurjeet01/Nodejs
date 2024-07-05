@@ -9,7 +9,7 @@ const categorySchema = new mongoose.Schema({
         type: String
     },
     url:{
-        type:string
+        type:String
     }
 
 },{versionKey:false});
