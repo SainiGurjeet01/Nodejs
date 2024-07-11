@@ -8,7 +8,7 @@ import CartRouter from "./routes/cart.routes.js";
 import url,{ fileURLToPath} from "url";
 import path, { dirname } from "path";
 import dotenv from "dotenv";
-dotenv.condig();
+dotenv.config();
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
@@ -19,7 +19,7 @@ const __dirname = dirname(__filename);
 
 console.log(__filename);
 console.log(__dirname);
-app.use(express.status(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname,"public")));
 
 mongoose.connect("mongodb://localhost:27017/eshopdb")
 .then(()=>{
